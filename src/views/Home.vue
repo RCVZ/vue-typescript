@@ -1,26 +1,18 @@
 <template>
   <div class="home">
-    <h1 class="home__header">Search for Greenhouse Gas Emissions by City</h1>
-    <Search/>
+    <img alt="Vue logo" src="../assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
   </div>
 </template>
 
-<script>
-import Search from '@/components/Search.vue'
+<script lang="ts">
+import Vue from 'vue'
+import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
 
-export default {
+export default Vue.extend({
 	name: 'home',
 	components: {
-		Search
+		HelloWorld
 	}
-}
+})
 </script>
-
-<style lang="scss">
-@import '@/styles/_variables.scss';
-
-.home__header {
-	max-width: 75%;
-	margin: $spacer * 2 auto;
-}
-</style>
