@@ -1,4 +1,4 @@
-export const capitalizeAllWords = text => {
+export const capitalizeAllWords = (text: string) => {
 	return text
 		.toLowerCase()
 		.split(' ')

@@ -5,15 +5,16 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import Search from '@/components/Search.vue'
 
-export default {
+export default Vue.extend({
 	name: 'home',
 	components: {
 		Search
 	}
-}
+})
 </script>
 
 <style lang="scss">

@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
+    "lint": "tslint --project . --fix",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
@@ -15,11 +15,14 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@types/jest": "^23.1.4",
     "@vue/cli-plugin-babel": "^3.2.0",
     "@vue/cli-plugin-eslint": "^3.2.0",
-    "@vue/cli-plugin-unit-jest": "^3.2.0",
+    "@vue/cli-plugin-typescript": "^3.4.1",
+    "@vue/cli-plugin-unit-jest": "^3.4.1",
     "@vue/cli-service": "^3.2.0",
     "@vue/eslint-config-prettier": "^4.0.0",
+    "@vue/eslint-config-typescript": "^3.2.0",
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
@@ -29,6 +32,8 @@
     "lint-staged": "^7.2.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
+    "ts-jest": "^23.0.0",
+    "typescript": "~3.2.2",
     "vue-template-compiler": "^2.5.17"
   },
   "eslintConfig": {
@@ -38,7 +43,8 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "@vue/prettier"
+      "@vue/prettier",
+      "@vue/typescript"
     ],
     "rules": {
       "prettier/prettier": [
@@ -87,7 +93,7 @@
       ]
     },
     "parserOptions": {
-      "parser": "babel-eslint"
+      "parser": "typescript-eslint-parser"
     }
   },
   "postcss": {
@@ -105,12 +111,15 @@
       "js",
       "jsx",
       "json",
-      "vue"
+      "vue",
+      "ts",
+      "tsx"
     ],
     "transform": {
       "^.+\\.vue$": "vue-jest",
       ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
-      "^.+\\.jsx?$": "babel-jest"
+      "^.+\\.jsx?$": "babel-jest",
+      "^.+\\.tsx?$": "ts-jest"
     },
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
@@ -121,7 +130,12 @@
     "testMatch": [
       "**/src/**/*.spec.(js|jsx|ts|tsx)"
     ],
-    "testURL": "http://localhost/"
+    "testURL": "http://localhost/",
+    "globals": {
+      "ts-jest": {
+        "babelConfig": true
+      }
+    }
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
